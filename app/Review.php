@@ -17,8 +17,8 @@ class Review extends Model
 
     public $fillable = [];
 
-    public function tourarea()
+    public function place()
     {
-        return $this->belongsTo('App\TourArea');
+        return $this->belongsTo('Place','id');
     }
 }

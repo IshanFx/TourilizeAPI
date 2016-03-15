@@ -16,4 +16,8 @@ class Guider extends Model
     protected $table = 'guider';
 
     public $fillable = [];
+
+    public function categories(){
+        return $this->belongsTo('App\Category');
+    }
 }

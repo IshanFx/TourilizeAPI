@@ -17,17 +17,23 @@ $app->get('/', function () use ($app) {
 /*
  * Route to manage Tour Location details
  * */
-$app->post('tour', 'TourController@store');
-$app->post('tour/{id}/update', 'TourController@update');
-$app->post('tour/{id}/review', 'TourController@storereview');
-$app->get('tour/{id}/review', 'TourController@showreview');
+$app->post('place', 'PlaceController@store');
+$app->post('place/{id}/update', 'PlaceController@update');
+$app->post('place/review', 'PlaceController@storereview');
+$app->get('place/{id}/review', 'PlaceController@showreview');
 
-$app->delete('tour', 'TourController@remove');
-$app->get('tour/findall', 'TourController@findall');
-$app->get('tour/{id}', 'TourController@findid');
-$app->get('tour/search/name/{name}', 'TourController@findname');
-$app->get('tour/search/district/{district}', 'TourController@finddistrict');
-$app->get('tour/search/category/{category}', 'TourController@findcategory');
+$app->delete('place', 'PlaceController@remove');
+$app->get('place/findall', 'PlaceController@findall');
+$app->get('place/{id}', 'PlaceController@findid');
+$app->get('place/name/{name}', 'PlaceController@findname');
+$app->get('place/district/{district}', 'PlaceController@finddistrict');
+$app->get('place/category/{category}', 'PlaceController@findcategory');
+
+/*
+ * Location Based Service
+ * */
+$app->get('place/location/{latitude}/{longitude}/{count}', 'PlaceController@findnearlocation');
+
 
 /*
  * Route to manage guider
@@ -35,8 +41,8 @@ $app->get('tour/search/category/{category}', 'TourController@findcategory');
 $app->post('guider/create', 'GuiderController@store');
 $app->delete('guider/{id}', 'GuiderController@remove');
 $app->post('guider/{id}/update', 'GuiderController@update');
-$app->get('guider/search/name/{name}', 'GuiderController@findguider');
-$app->get('guider/search/category/{category}', 'GuiderController@findguidercategory');
+$app->get('guider/name/{name}', 'GuiderController@findguider');
+$app->get('guider/category/{category}', 'GuiderController@findguiderbycategory');
 
 /*
  * Route to manage Hotels
@@ -44,8 +50,9 @@ $app->get('guider/search/category/{category}', 'GuiderController@findguidercateg
 $app->post('hotel/create', 'HotelController@store');
 $app->delete('hotel/{id}', 'HotelController@remove');
 $app->post('hotel/{id}/update', 'HotelController@update');
-$app->get('hotel/search/name/{name}', 'HotelController@findhotel');
-$app->get('hotel/search/district/{district}', 'HotelController@findhoteldistrict');
+$app->get('hotel/findall', 'HotelController@findall');
+$app->get('hotel/name/{name}', 'HotelController@findhotel');
+$app->get('hotel/district/{district}', 'HotelController@findhoteldistrict');
 
 
 

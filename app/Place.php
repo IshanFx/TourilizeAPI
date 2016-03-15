@@ -11,14 +11,14 @@ namespace App;
 use App\Review;
 use Illuminate\Database\Eloquent\Model;
 
-class TourArea extends Model
+class Place extends Model
 {
-    protected $table = 'tourarea';
+    protected $table = 'place';
 
     public $fillable = [];
 
     public function reviews()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany('App\Review','place_id');
     }
 }
