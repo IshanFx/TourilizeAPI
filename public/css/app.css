@@ -1,0 +1,9 @@
+.topnavigation{
+    margin-top: 40px;
+}
+.sidebar ul li{
+    list-style-type: none;
+}
+.sidetopic {
+    font-weight: bolder !important;
+}

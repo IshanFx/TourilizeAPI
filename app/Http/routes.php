@@ -12,8 +12,22 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+   return view('document');
 });
+$app->get('/doc/place', function () use ($app) {
+   return view('place');
+});
+$app->get('/doc/hotel', function () use ($app) {
+   return view('hotel');
+});
+$app->get('/doc/guider', function () use ($app) {
+   return view('guider');
+});
+$app->get('/doc/placereview', function () use ($app) {
+   return view('review');
+});
+
+
 /*
  * Route to manage Tour Location details
  * */

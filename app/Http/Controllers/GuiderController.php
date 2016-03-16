@@ -26,6 +26,10 @@ class GuiderController extends Controller
         $guider->email = $request->email;
         $guider->category = $request->category;
         $guider->language = $request->language;
+
+        return response()->json([
+
+        ]);
     }
 
     public function remove($id){
