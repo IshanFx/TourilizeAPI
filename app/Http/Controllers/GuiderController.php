@@ -17,19 +17,37 @@ use Illuminate\Support\Facades\DB;
 class GuiderController extends Controller
 {
     public function store(Request $request){
-        $guider = new Guider();
-        $guider->firstname = $request->firstname;
-        $guider->lastname = $request->lastname;
-        $guider->telephone = $request->telephone;
-        $guider->nic = $request->nic;
-        $guider->address = $request->address;
-        $guider->email = $request->email;
-        $guider->category = $request->category;
-        $guider->language = $request->language;
+        $validator = Validator::make($request->all(),
+            [
+                'district' => 'required',
+                'name' => 'required',
+            ]
+        );
 
-        return response()->json([
+        if ($validator->fails()) {
+            return json_encode(
+                [
+                    "Error Code"=>"500",
+                    "Message"=>"Fill All required Parameters"
+                ]
+            );
+        }
+        else{
+            $guider = new Guider();
+            $guider->firstname = $request->firstname;
+            $guider->lastname = $request->lastname;
+            $guider->telephone = $request->telephone;
+            $guider->nic = $request->nic;
+            $guider->address = $request->address;
+            $guider->email = $request->email;
+            $guider->category = $request->category;
+            $guider->language = $request->language;
 
-        ]);
+            return response()->json([
+
+            ]);
+        }
+
     }
 
     public function remove($id){

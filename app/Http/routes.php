@@ -27,13 +27,21 @@ $app->get('/doc/placereview', function () use ($app) {
    return view('review');
 });
 
+$app->get('/doc/errordoc', function () use ($app) {
+   return view('errorpage');
+});
+$app->get('/doc/requestresponse', function () use ($app) {
+   return view('requestresponse');
+});
+
 
 /*
  * Route to manage Tour Location details
  * */
-$app->post('place', 'PlaceController@store');
+$app->post('place/create', 'PlaceController@store');
 $app->post('place/{id}/update', 'PlaceController@update');
 $app->post('place/review', 'PlaceController@storereview');
+$app->get('place/review/findall', 'PlaceController@reviewfindall');
 $app->get('place/{id}/review', 'PlaceController@showreview');
 
 $app->delete('place', 'PlaceController@remove');

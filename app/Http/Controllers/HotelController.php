@@ -17,6 +17,24 @@ use Illuminate\Support\Facades\DB;
 class HotelController extends Controller
 {
     public function store(Request $request){
+        $validator = Validator::make($request->all(),
+            [
+                'district' => 'required',
+                'name' => 'required',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return json_encode(
+                [
+                    "Error Code"=>"500",
+                    "Message"=>"Fill All required Parameters"
+                ]
+            );
+        }
+        else{
+
+        }
 
     }
 

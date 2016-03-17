@@ -16,26 +16,52 @@ use App\Review;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Debug\Debug;
 
 class PlaceController extends Controller
 {
 
     public function store(Request $request){
-        $districtID  = $this->districtId($request->get('district'));
-        $categoryID  = $this->categoryId($request->get('category'));
-        $place = new Place();
-        $place->name = $request->get('name');
-        $place->location =$request->get('name');
-        $place->description = $request->get('description');
-        $place->climate = $request->get('climate');
-        $place->category = $categoryID;
-        $place->district = $districtID;
-        $place->updated_at = Carbon::now();
-        $place->created_at = Carbon::now();
-        $place->save();
+        $validator = Validator::make($request->all(),
+            [
+                'district' => 'required',
+                'name' => 'required',
+                'climate' => 'required',
+                'category' => 'required',
+                'district' => 'required',
+                'description' => 'required',
+            ]
+        );
 
-        return json_encode($place);
+        if ($validator->fails()) {
+         return json_encode(
+             [
+                 "Error Code"=>"500",
+                 "Message"=>"Fill All required Parameters"
+             ]
+         );
+        }
+        else
+        {
+            $districtID  = $this->districtId($request->district);
+            $categoryID  = $this->categoryId($request->category);
+            $place = new Place();
+            $place->name = $request->name;
+            $place->location =$request->name;
+            $place->description = $request->description;
+            $place->climate = $request->climate;
+            $place->category = $categoryID;
+            $place->district = $districtID;
+            $place->updated_at = Carbon::now();
+            $place->created_at = Carbon::now();
+            $place->save();
+            return json_encode($place);
+        }
+
+
+
+
     }
 
     /*
@@ -136,9 +162,12 @@ class PlaceController extends Controller
     public function storereview(){}
 
     public function showreview($id){
-        $place = Review::where("place_id",$id)
-                ->get();
-
+        $place = DB::select('
+             select comment,CONCAT(user.firstname," ",user.lastname) as name from review
+            JOIN USER ON user.id = review.USER_ID
+            JOIN place ON review.place_id = place.ID
+             WHERE review.place_id ='.$id.'
+        ');
         return json_encode($place);
     }
 
@@ -166,5 +195,40 @@ class PlaceController extends Controller
   		');
 
         return json_encode($nearlocationdata);
+    }
+
+    public function reviewfindall(){
+        $items = array();
+      /* $places =  DB::select('
+          select place.id as id,place.name as name,review.comment as comment from place JOIN review ON place.id=review.place_id
+        ');*/
+        $places =  DB::select('
+          select id ,name from place
+        ');
+
+
+       $places = json_decode(json_encode($places),true);
+
+        foreach($places as $place){
+            $id = $place['id'];
+
+            $reviews =  DB::select('
+              select comment,user.firstname as name from review JOIN user ON user.id=review.user_id WHERE place_id ='.$id.'
+            ');
+            //$reviews = json_decode(json_encode($reviews),true);
+
+            $name = $place['name'];
+                $item = array
+                (
+                    'id' => $id,
+                    'name' => $name,
+                    'comments' => $reviews
+                );
+
+          //  array_push( $item['comments'],$reviews);
+            array_push($items,$item);
+            //$items[$id] = $item;
+        }
+        return json_encode($items);
     }
 }

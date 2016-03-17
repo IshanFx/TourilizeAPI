@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use FastRoute\BadRouteException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -45,6 +46,19 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+
+        if ($e instanceof HttpException) {
+            $status = $e->getStatusCode();
+            //print_r($e->getStatusCode());
+           return json_encode([
+               "Error Code"=>$e->getStatusCode(),
+               "Message"=>"Request URI Not Found",
+           ]);
+            if (view()->exists("errors.$status")) {
+                return response(view("errors.$status"), $status);
+            }
+        }
+
+      //  return parent::render($request, $e);
     }
 }

@@ -20,7 +20,7 @@
         </ol>
         <ul>
             <h4><a href="{{ url('doc/requestresponse') }}">Request/Response</a></h4>
-            <h4><a href="{{ url('doc/errors') }}">Error</a></h4>
+            <h4><a href="{{ url('doc/errordoc') }}">Error</a></h4>
         </ul>
         <ol class="breadcrumb">
             <li><h4 class="sidetopic">Usage</h4></li>
