@@ -227,3 +227,19 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+a{
+    text-decoration: none !important;
+}
+.maintopic h2{
+    color:#f4645f !important;
+    font-weight: bolder;
+    margin-left: 10%;
+}
+.sidebar h5 a{
+    color:#f4645f !important;
+    font-weight: 700;
+}
+.sidetopic {
+    color: #959595;
+    font-weight: bold;
+}

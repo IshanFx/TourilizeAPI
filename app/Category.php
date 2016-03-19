@@ -16,7 +16,7 @@ class Category extends Model
     protected $table = 'category';
 
     public function categoryId($name){
-        $categoryID = Category::where('CATEGORY',$name)->first();
+        $categoryID = Category::where('NAME',$name)->first();
         return $categoryID->ID;
     }
 

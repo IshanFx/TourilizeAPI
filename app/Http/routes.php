@@ -33,34 +33,39 @@ $app->get('/doc/errordoc', function () use ($app) {
 $app->get('/doc/requestresponse', function () use ($app) {
    return view('requestresponse');
 });
+$app->get('/doc/user', function () use ($app) {
+   return view('register');
+});
 
 
 /*
- * Route to manage Tour Location details
+ * Route to manage Place details
  * */
 $app->post('place/create', 'PlaceController@store');
 $app->post('place/{id}/update', 'PlaceController@update');
-$app->post('place/review', 'PlaceController@storereview');
-$app->get('place/review/findall', 'PlaceController@reviewfindall');
-$app->get('place/{id}/review', 'PlaceController@showreview');
-
 $app->delete('place', 'PlaceController@remove');
-$app->get('place/findall', 'PlaceController@findall');
+$app->get('place/findall','PlaceController@findall');
 $app->get('place/{id}', 'PlaceController@findid');
 $app->get('place/name/{name}', 'PlaceController@findname');
 $app->get('place/district/{district}', 'PlaceController@finddistrict');
 $app->get('place/category/{category}', 'PlaceController@findcategory');
 
 /*
+ * Route to mange review details
+ * */
+$app->post('place/review/create', 'PlaceController@storereview');
+$app->get('place/review/findall', 'PlaceController@reviewfindall');
+$app->get('place/{placeid}/review', 'PlaceController@showreview');
+/*
  * Location Based Service
  * */
 $app->get('place/location/{latitude}/{longitude}/{count}', 'PlaceController@findnearlocation');
-
 
 /*
  * Route to manage guider
  * */
 $app->post('guider/create', 'GuiderController@store');
+$app->get('guider/findall', 'GuiderController@findall');
 $app->delete('guider/{id}', 'GuiderController@remove');
 $app->post('guider/{id}/update', 'GuiderController@update');
 $app->get('guider/name/{name}', 'GuiderController@findguider');
@@ -73,9 +78,16 @@ $app->post('hotel/create', 'HotelController@store');
 $app->delete('hotel/{id}', 'HotelController@remove');
 $app->post('hotel/{id}/update', 'HotelController@update');
 $app->get('hotel/findall', 'HotelController@findall');
-$app->get('hotel/name/{name}', 'HotelController@findhotel');
+$app->get('hotel/name/{name}/{token}', 'HotelController@findhotel');
 $app->get('hotel/district/{district}', 'HotelController@findhoteldistrict');
 
+
+$app->get('testtoken',function(){
+   \App\User::generateToken('ishantuf@gmail.com','123');
+});
+
+$app->post('user/create','UserController@create');
+$app->post('token/create','UserController@tokencheck');
 
 
 

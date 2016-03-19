@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 
-    <div id="page-wrapper" class="col-md-8">
+    <div id="page-wrapper" class="col-md-5 col-md-offset-1">
 
         <div class="container-fluid">
 
@@ -16,14 +16,13 @@
 
             <div class="row">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
 
                         <p >
                            This is the response codes send by API id some error occure. Base on this error response
                             you can configure your code.
                         </p>
                         <br>
-                        <div class="row">
                             <table class="table table-bordered">
                                 <tr>
                                     <td>200 OK</td>
@@ -42,8 +41,6 @@
                                     <td>Internal server error</td>
                                 </tr>
                             </table>
-                        </div>
-
                     </div>
                 </div>
 

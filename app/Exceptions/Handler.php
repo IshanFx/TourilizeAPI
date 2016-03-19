@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
 
-        if ($e instanceof HttpException) {
+        /*if ($e instanceof HttpException) {
             $status = $e->getStatusCode();
             //print_r($e->getStatusCode());
            return json_encode([
@@ -57,8 +57,8 @@ class Handler extends ExceptionHandler
             if (view()->exists("errors.$status")) {
                 return response(view("errors.$status"), $status);
             }
-        }
+        }*/
 
-      //  return parent::render($request, $e);
+       return parent::render($request, $e);
     }
 }

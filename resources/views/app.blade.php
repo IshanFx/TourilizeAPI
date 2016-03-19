@@ -8,7 +8,9 @@
     <title></title>
 </head>
 <body>
-<h2>TouriLize API</h2>
+<div class="maintopic">
+    <h2 >TouriLize API</h2>
+</div>
 <nav class="navbar navbar-default">
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -17,14 +19,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Tourilizer API</a>
+    <a class="navbar-brand" href="index.html">Power your APP</a>
 </div>
 <!-- Top Menu Items -->
 <ul class="nav navbar-right top-nav">
 
-    <li><a href="#">API Key</a></li>
+    <li><a href="{{ url('/') }}">API Key</a></li>
     <li><a href="#">Demo</a></li>
-    <li><a href="#">Log In</a></li>
+    <li><a href="{{ url('doc/user') }}">Register</a></li>
     {{--<li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -46,6 +48,8 @@
 </ul>
 </nav>
 <div id="wrapper">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     @include('sidenav')
     @yield('content')
@@ -54,8 +58,9 @@
 <script src="{{asset('js/vendor/what-input.min.js')}}"  type="text/javascript"></script>
 <script src="{{asset('js/app.js')}}"  type="text/javascript"></script>
 <script src="{{asset('js/foundation.min.js')}}"  type="text/javascript"></script>--}}
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
 
 </body>
 </html>

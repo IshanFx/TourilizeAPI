@@ -60,13 +60,13 @@ class GuiderController extends Controller
     }
 
     public function findguider($name){
-        $guider = DB::select('
+        $guider = DB::select("
             SELECT guider.id,firstname,lastname,telephone as contact, nic , address,email
             FROM guider
             JOIN category ON guider.category_id=category.id
-        ');
+            WHERE firstname = '".$name."' ");
 
-        return json_encode($guider);
+        return response()->json($guider);
     }
 
     public function findguiderbycategory($name){
@@ -80,8 +80,16 @@ class GuiderController extends Controller
             WHERE category_id='.$categoryID.'
         ');
 
-        return json_encode($guider);
+        return response()->json($guider);
     }
 
+    public function findall(){
+        $guider = DB::select('
+            SELECT guider.id,firstname,lastname,telephone as contact, nic , address,email
+            FROM guider
+            JOIN category ON guider.category_id=category.id
+        ');
+        return response()->json($guider);
+    }
 
 }

@@ -22,6 +22,7 @@ use Symfony\Component\Debug\Debug;
 class PlaceController extends Controller
 {
 
+
     public function store(Request $request){
         $validator = Validator::make($request->all(),
             [
@@ -76,7 +77,8 @@ class PlaceController extends Controller
             JOIN district ON district.id = place.district_id
 
         ');
-        return json_encode($place);
+
+        return response()->json($place);
     }
 
     /*
@@ -93,7 +95,7 @@ class PlaceController extends Controller
             WHERE place.id='.$id.'
         ');
 
-        return json_encode($place);
+        return response()->json($place);
     }
 
     /*
@@ -101,15 +103,15 @@ class PlaceController extends Controller
      * */
     public function findname($name){
 
-        $place = DB::select('
+        $place = DB::select("
             SELECT place.id,place.name,x(location) as longitude,y(location) as latitude,
             description,climate,category.name as category,district.name as district
             FROM place
             JOIN category ON category.id = place.category_id
             JOIN district ON district.id = place.district_id
-            WHERE place.name='.$name.'
-        ');
-        return json_encode($place);
+            WHERE place.name='".$name."' ");
+
+        return response()->json($place);
     }
 
     /*
@@ -118,7 +120,7 @@ class PlaceController extends Controller
     public function finddistrict($name){
         $district = new District();
 
-        $districtID = $district->districtId($district);
+        $districtID = $district->districtId($name);
 
         $place = DB::select('
             SELECT place.id,place.name,x(location) as longitude,y(location) as latitude,
@@ -129,7 +131,7 @@ class PlaceController extends Controller
             WHERE place.district_id='.$districtID.'
         ');
 
-        return json_encode($place);
+        return response()->json($place);
     }
 
     /*
@@ -148,7 +150,7 @@ class PlaceController extends Controller
             WHERE place.category_id='.$categoryID.'
         ');
 
-        return json_encode($place);
+        return response()->json($place);
     }
 
     public function remove($id){
@@ -163,12 +165,11 @@ class PlaceController extends Controller
 
     public function showreview($id){
         $place = DB::select('
-             select comment,CONCAT(user.firstname," ",user.lastname) as name from review
-            JOIN USER ON user.id = review.USER_ID
+            select comment,user from review
             JOIN place ON review.place_id = place.ID
              WHERE review.place_id ='.$id.'
         ');
-        return json_encode($place);
+        return response()->json($place);
     }
 
 
@@ -194,7 +195,7 @@ class PlaceController extends Controller
 
   		');
 
-        return json_encode($nearlocationdata);
+        return response()->json($nearlocationdata);
     }
 
     public function reviewfindall(){
@@ -213,7 +214,7 @@ class PlaceController extends Controller
             $id = $place['id'];
 
             $reviews =  DB::select('
-              select comment,user.firstname as name from review JOIN user ON user.id=review.user_id WHERE place_id ='.$id.'
+              select comment,user from review WHERE place_id ='.$id.'
             ');
             //$reviews = json_decode(json_encode($reviews),true);
 
@@ -229,6 +230,6 @@ class PlaceController extends Controller
             array_push($items,$item);
             //$items[$id] = $item;
         }
-        return json_encode($items);
+        return response()->json($items);
     }
 }

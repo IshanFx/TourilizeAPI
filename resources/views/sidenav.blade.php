@@ -6,33 +6,28 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 
 
-    <div class="col-lg-3 sidebar">
-        <ol class="breadcrumb">
-            <li><h4 class="sidetopic">Overview</h4></li>
-        </ol>
-        <ul>
-            <h4><a href="{{ url('doc/introduction') }}">Introduction</a></h4>
+    <div class="col-lg-2 sidebar">
 
-        </ul>
-        <ol class="breadcrumb">
+            <h4 class="sidetopic">Overview</h4>
+            <h5><a href="{{ url('/') }}">Introduction</a></h5>
+            <h5><a href="{{ url('doc/step') }}">Steps</a></h5>
+        <hr>
+            <h4 class="sidetopic">Service Overview</h4>
 
-            <li><h4 class="sidetopic">Service Overview</h4></li>
-        </ol>
-        <ul>
-            <h4><a href="{{ url('doc/requestresponse') }}">Request/Response</a></h4>
-            <h4><a href="{{ url('doc/errordoc') }}">Error</a></h4>
-        </ul>
-        <ol class="breadcrumb">
-            <li><h4 class="sidetopic">Usage</h4></li>
+            <h5><a href="{{ url('doc/requestresponse') }}">Request/Response</a></h5>
+            <h5><a href="{{ url('doc/errordoc') }}">Error</a></h5>
 
-        </ol>
-        <ul>
-            <h4><a href="{{ url('doc/place') }}">Places</a></h4>
-            <h4><a href="{{ url('doc/placereview') }}">Places Review</a></h4>
-            <h4><a href="{{ url('doc/hotel') }}">Hotel</a></h4>
-            <h4><a href="{{ url('doc/guider') }}">Guiders</a></h4>
-            <h4><a href="{{ url('doc/user') }}">User</a></h4>
-        </ul>
+        <hr>
+            <h4 class="sidetopic">Usage</h4>
+
+
+
+            <h5><a href="{{ url('doc/place') }}">Places</a></h5>
+            <h5><a href="{{ url('doc/placereview') }}">Places Review</a></h5>
+            <h5><a href="{{ url('doc/hotel') }}">Hotel</a></h5>
+            <h5><a href="{{ url('doc/guider') }}">Guiders</a></h5>
+            <h5><a href="{{ url('doc/user') }}">User</a></h5>
+        <hr>
 
     </div>
 

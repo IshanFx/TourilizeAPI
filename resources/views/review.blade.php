@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 
-    <div id="page-wrapper" class="col-md-8">
+    <div id="page-wrapper" class="col-md-8 col-md-offset-1">
 
         <div class="container-fluid">
 
