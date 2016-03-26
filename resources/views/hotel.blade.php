@@ -3,6 +3,7 @@
     <?php
     $host = "http://api.tourilize.com";
     $apiurlhotelcreate = $host."/hotel/create";
+    $apiurlhotelupdate = $host."/hotel/{id}/update";
     $apiurlhotelfindall = $host."/hotel/findall";
     $apiurlhotelfindid = $host."/hotel/{id}";
     $apiurlhotelfindname  = $host."/hotel/name/{name}";
@@ -99,6 +100,62 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;"Longitude" : "79.3245"<br><br>
                             }
                         </p>
+                    </div>
+                </div>
+
+            </div>
+
+                <hr>
+
+                <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                       Update Hotel Details By Id
+                    </h4>
+                    <p>
+                        You can Update hotel details. But you cannot update every values.only <br>
+                        name,address,telephone,description and email can update.
+                    </p>
+                    <table class="table table-bordered ">
+                        <tr>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            <th>type</th>
+                        </tr>
+                        <tr>
+                            <td>ID</td>
+                            <td>Add the hotel ID</td>
+                            <td>Number</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>Add the place Name</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>Add the place Description</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>Add the address of the hotel</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Telephone</td>
+                            <td>Add the telephone number of hotel</td>
+                            <td>Number</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Add the email address of hotel</td>
+                            <td>Text</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <div class="well col-md-12 well-sm">
+                        {{ $apiurlhotelupdate }}
                     </div>
                 </div>
 

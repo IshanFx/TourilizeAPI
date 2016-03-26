@@ -9,6 +9,7 @@
     $apiurlplacefindcategory = "GET: ". $host . "/place/category/{categoryname}";
     $apiurlplacefindlatlong = "GET: ". $host . "/place/location/{latitude}/{longitude}/{count}";
     $apiurlplacecreate = "POST: ". $host . "/place/create";
+    $apiurlplaceupdate = "POST: ". $host . "/place/{id}/update";
 
     ?>
     <div id="page-wrapper" class="col-md-5 col-md-offset-1">
@@ -104,6 +105,56 @@
 
 
                 </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <h4>
+                        Update Place Details By Id
+                    </h4>
+
+                    <p>
+                       You can Update current place details. But you cannot update every values.only <br>
+                        discription,climate and category can update.
+
+                    </p>
+                    <br>
+                    <table class="table table-bordered ">
+                        <tr>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            <th>type</th>
+                        </tr>
+                        <tr>
+                            <td>ID</td>
+                            <td>Add the place ID</td>
+                            <td>Number</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>Description of place </td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Category</td>
+                            <td>Category of place</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Climate</td>
+                            <td>Climate of place</td>
+                            <td>Text</td>
+                        </tr>
+
+                    </table>
+
+                    <div class="well col-md-12 well-sm">
+                        {{ $apiurlplaceupdate }}
+                    </div>
+                </div>
+
             </div>
 
             <hr>

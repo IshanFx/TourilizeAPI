@@ -181,7 +181,23 @@ class PlaceController extends Controller
        Place::destroy($id);
     }
 
-    public function update($id){
+    public function update(Request $request,$id){
+        $categoryId = Category::categoryId($request->category);
+        $place = Place::find($id);
+
+        $place->discription = $request->discription;
+        $place->climate = $request->climate;
+        $place->category = $categoryId;
+
+        $place->save();
+
+        return response()->json(
+            [
+                'Id'=>$id,
+                'discription'=>$place->discription,
+                'category'=>$request->category
+            ]
+        );
 
     }
 

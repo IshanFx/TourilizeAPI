@@ -3,6 +3,7 @@
 <?php
     $host = "http://api.tourilize.com";
     $apiurlguidercreate = $host."/guider/create";
+    $apiurlguiderupdate = $host."/guider/{id}/update";
     $apiurlguiderfindall = $host."/guider/findall";
     $apiurlguiderfindid = $host."/guider/{id}";
     $apiurlguiderfindname  = $host."/guider/name/{name}";
@@ -89,6 +90,52 @@
 
                             }
                         </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                        Update Guider Details By Id
+                    </h4>
+                    <p>
+                        You can Update guider details. But you cannot update every values.only <br>
+                        address,telephone,email and category can update.
+                    </p>
+                    <table class="table table-bordered ">
+                        <tr>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            <th>type</th>
+                        </tr>
+                        <tr>
+                            <td>ID</td>
+                            <td>Add the guider ID</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>Add the address of the guider</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Telephone</td>
+                            <td>Add the telephone number of guider</td>
+                            <td>Number</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Add the email address of guider</td>
+                            <td>Text</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <div class="well col-md-12 well-sm">
+                        {{ $apiurlguiderupdate }}
                     </div>
                 </div>
 

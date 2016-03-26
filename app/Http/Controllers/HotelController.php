@@ -87,8 +87,27 @@ class HotelController extends Controller
         Hotel::destroy($id);
     }
 
-    public function update($id){
+    public function update(Request $request,$id){
 
+        $hotel = Hotel::find($id);
+        $hotel->name = $request->name;
+        $hotel->address = $request->address;
+        $hotel->telephone = $request->telephone;
+        $hotel->email = $request->email;
+        $hotel->description = $request->description;
+
+        $hotel->save();
+
+        return response()->json(
+            [
+                'Id'=>$id,
+                'Name'=>$hotel->name,
+                'description'=>$hotel->description,
+                'address'=>$hotel->address,
+                'telephone'=>$hotel->telephone,
+                'email'=>$hotel->email
+            ]
+        );
     }
 
     /*

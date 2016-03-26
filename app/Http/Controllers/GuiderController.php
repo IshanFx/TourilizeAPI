@@ -55,7 +55,26 @@ class GuiderController extends Controller
 
     }
 
-    public function update($id){
+    public function update(Request $request, $id){
+
+        $categoryId = Category::categoryId($request->category);
+        $guider = Guider::find($id);
+
+        $guider->address = $request->address;
+        $guider->telephone = $request->telephone;
+        $guider->email = $request->email;
+        $guider->category = $categoryId;
+        $guider->save();
+
+        return response()->json(
+            [
+                'Id'=>$id,
+                'Category'=>$guider->category,
+                'Address'=>$guider->address,
+                'Telephone'=>$guider->telephone,
+                'Email'=>$guider->email
+            ]
+        );
 
     }
 
