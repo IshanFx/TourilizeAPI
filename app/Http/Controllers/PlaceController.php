@@ -30,7 +30,6 @@ class PlaceController extends Controller
                 'name' => 'required',
                 'climate' => 'required',
                 'category' => 'required',
-                'district' => 'required',
                 'description' => 'required',
             ]
         );
@@ -45,23 +44,48 @@ class PlaceController extends Controller
         }
         else
         {
-            $districtID  = $this->districtId($request->district);
-            $categoryID  = $this->categoryId($request->category);
+            $districtID  = District::districtId($request->district);
+            $categoryID  = Category::categoryId($request->category);
+            $latitude    = $request->latitude;
+            $longitude   = $request->longitude;
+
             $place = new Place();
             $place->name = $request->name;
-            $place->location =$request->name;
             $place->description = $request->description;
             $place->climate = $request->climate;
             $place->category = $categoryID;
             $place->district = $districtID;
             $place->updated_at = Carbon::now();
             $place->created_at = Carbon::now();
-            $place->save();
-            return json_encode($place);
+
+            $placeId = DB::table('place')->insertGetId(
+                [
+                    'name' => $place->name,
+                    'description' => $place->description,
+                    'climate'=>$place->climate,
+                    'category_id'=>$categoryID,
+                    'district_id'=>$districtID,
+                    'updated_at'=>Carbon::now(),
+                    'created_at'=>Carbon::now()
+                ]
+            );
+
+            DB::update('update place set location=POINT(' . $latitude . ',' . $longitude . ') where id=' . $placeId . ' ');
+
+            return response()->json(
+                [
+                    'Id'=>$placeId,
+                    'Name' =>  $place->name,
+                    'Description' =>$place->description,
+                    'Climate'=>$place->climate,
+                    'Category'=>$request->category,
+                    'District'=>$request->district,
+                    'Latitude'=>$latitude,
+                    'Longitude'=>$longitude
+                ]
+
+            );
         }
-
-
-
 
     }
 
@@ -161,7 +185,23 @@ class PlaceController extends Controller
 
     }
 
-    public function storereview(){}
+    public function storereview(Request $request){
+        $review = new Review();
+        $review->place_id = $request->placeid;
+        $review->comment = $request->comment;
+        $review->user = $request->user;
+
+        $review->save();
+
+        return response()->json(
+            [
+                'Place_ID'=>$review->place_id,
+                'Comment'=>$review->comment,
+                'User'=>$request->name
+            ]
+        );
+
+    }
 
     public function showreview($id){
         $place = DB::select('
@@ -198,13 +238,13 @@ class PlaceController extends Controller
         return response()->json($nearlocationdata);
     }
 
-    public function reviewfindall(){
+    public function reviewfindId($placeid){
         $items = array();
       /* $places =  DB::select('
           select place.id as id,place.name as name,review.comment as comment from place JOIN review ON place.id=review.place_id
         ');*/
         $places =  DB::select('
-          select id ,name from place
+          select id ,name from place WHERE id = '.$placeid.'
         ');
 
 

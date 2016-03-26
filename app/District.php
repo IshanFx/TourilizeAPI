@@ -16,7 +16,7 @@ class District extends Model
     protected $table = 'district';
 
 
-    public function districtId($name){
+    public static function districtId($name){
         $districtID =  District::where('name',$name)->first();
         return $districtID->ID;
     }

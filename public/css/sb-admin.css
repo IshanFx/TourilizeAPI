@@ -7,7 +7,7 @@
 /* Global Styles */
 
 body {
-    margin-top: 100px;
+    margin-top: 0px !important;
     background-color: #fff;
 }
 
@@ -60,6 +60,7 @@ body {
     padding-bottom: 15px;
     line-height: 20px;
     color: #999;
+    font-weight: bold;
 }
 
 .top-nav>li>a:hover,
@@ -67,8 +68,8 @@ body {
 .top-nav>.open>a,
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
-    color: #fff;
-    background-color: #000;
+    color: #f4645f;
+    background-color: #fff;
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -231,9 +232,16 @@ a{
     text-decoration: none !important;
 }
 .maintopic h2{
-    color:#f4645f !important;
+    color:#fff !important;
     font-weight: bolder;
     margin-left: 10%;
+}
+.maintopic{
+    background:#f4645f;
+    height: 100px;
+    margin-top: 0px;
+    padding: 15px;
+
 }
 .sidebar h5 a{
     color:#f4645f !important;

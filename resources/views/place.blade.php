@@ -2,12 +2,13 @@
 @section('content')
     <?php
     $host = "http://api.tourilize.com";
-    $apiurlplacefindall = $host . "/place/findall";
-    $apiurlplacefindid = $host . "/place/{id}";
-    $apiurlplacefindname = $host . "/place/name/{name}";
-    $apiurlplacefinddistrict = $host . "/place/district/{districtname}";
-    $apiurlplacefindcategory = $host . "/place/category/{categoryname}";
-    $apiurlplacefindlatlong = $host . "/place/location/{latitude}/{longitude}/{count}";
+    $apiurlplacefindall ="GET: ". $host . "/place/findall";
+    $apiurlplacefindid = "GET: ". $host . "/place/{id}";
+    $apiurlplacefindname = "GET: ". $host . "/place/name/{name}";
+    $apiurlplacefinddistrict = "GET: ". $host . "/place/district/{districtname}";
+    $apiurlplacefindcategory = "GET: ". $host . "/place/category/{categoryname}";
+    $apiurlplacefindlatlong = "GET: ". $host . "/place/location/{latitude}/{longitude}/{count}";
+    $apiurlplacecreate = "POST: ". $host . "/place/create";
 
     ?>
     <div id="page-wrapper" class="col-md-5 col-md-offset-1">
@@ -27,6 +28,89 @@
             <div class="row">
                 <div class="col-md-12">
                     <h4>
+                        Create New Place
+                    </h4>
+
+                    <p>
+                        You can submit the new visting place is the API doesn't have. Before submit please check whether the
+                        all data can submit.
+                    </p>
+                    <br>
+                    <table class="table table-bordered ">
+                        <tr>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>Add the place Name</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>Add the place Description</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Climate</td>
+                            <td>Add the place of place</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Category</td>
+                            <td>Add the category related to place</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>District</td>
+                            <td>Add the district where place establish</td>
+                            <td>Text</td>
+                        </tr>
+                        <tr>
+                            <td>Latitude</td>
+                            <td>Add the latitude coordinate of the place</td>
+                            <td>Float</td>
+                        </tr>
+                        <tr>
+                            <td>Longitude</td>
+                            <td>Add the longitude coordinate of the place</td>
+                            <td>Float</td>
+                        </tr>
+                    </table>
+
+                    <div class="well col-md-12 well-sm">
+                        {{ $apiurlplacecreate }}
+                    </div>
+
+                    <p>
+                        Response to this request return this JSON Object.
+                    </p>
+
+                    <div class="well col-md-12 well-sm">
+                       <p>
+                           {<br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Id" : "23",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Unawatuna",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Description" : "This is Good Place to visit",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Climate" : "Sunny",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Category" : "Beach",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"District" : "Galle",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Latitude" : "6.7890",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Longitude" : "79.3245"<br><br>
+                            }
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
                         Place Details
                     </h4>
 
@@ -40,11 +124,34 @@
                     </div>
 
                     <p>
-                        Response to this request return this JSON Array of datas.
+                        Response to this request return this JSON Array of data.
                     </p>
 
                     <div class="well col-md-12 well-sm">
-
+                        <p>
+                            [<br>
+                            &nbsp;&nbsp;{<br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Id" : "1",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Yaala",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Description" : "This is Good Place to visit",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Climate" : "Sunny",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Category" : "Forest",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"District" : "Dambulla",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Latitude" : "6.7890",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Longitude" : "79.3245"<br><br>
+                            &nbsp;&nbsp;},<br>
+                            &nbsp;&nbsp;{<br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Id" : "23",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Name" : "Unawatuna",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Description" : "This is Good Place to visit",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Climate" : "Sunny",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Category" : "Beach",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"District" : "Galle",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Latitude" : "6.7890",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Longitude" : "79.3245"<br><br>
+                            &nbsp;&nbsp;}<br>
+                            ]
+                        </p>
                     </div>
 
 
@@ -60,8 +167,9 @@
                     </h4>
 
                     <p>
-                        If you Know the place ID you can use this request to grab data. Respose is same as mention
-                        above.
+                        If you Know the place ID you can use this request to grab data. Respose is same as creating
+                        new place.
+
                     </p>
                     <br>
                     <table class="table table-bordered ">
@@ -93,8 +201,8 @@
                     </h4>
 
                     <p>
-                        If you Know the place name you can use this request to grab data. Respose is same as mention
-                        above.
+                        If you Know the place name you can use this request to grab data.Respose is same as creating
+                        new place.
                     </p>
                     <br>
                     <table class="table table-bordered ">
@@ -126,7 +234,7 @@
 
                     <p>
                         If you need to grab the details of visting places for each district you can this request.
-                        Respose is same as mention above.
+                        Respose is same as creating new place.
                     </p>
                     <br>
                     <table class="table table-bordered ">
@@ -158,7 +266,8 @@
                     <h5>
                         If you need to grab the details of visting places for each categories like heritage,beach,forest
                         etc.
-                        <br>you can use this request. Respose is same as mention above.
+                        <br>you can use this request.Respose is same as creating
+                        new place..
                     </h5>
 
                     <br>
@@ -191,7 +300,8 @@
                     <h5>
                         If you need to get the details of visiting places near your current location you can use
                         this request.This request can use to get any number of visiting places based on providing
-                        latitude and longitude.<br>you can use this request. Respose is same as mention above.
+                        latitude and longitude.<br>you can use this request.Respose is same as creating
+                        new place..
                     </h5>
 
                     <br>
@@ -199,7 +309,7 @@
                         <tr>
                             <th>Parameters</th>
                             <th>Description</th>
-                            <th>type</th>
+                            <th>Type</th>
                         </tr>
                         <tr>
                             <td>Latitude</td>

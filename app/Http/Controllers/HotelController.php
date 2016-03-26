@@ -20,8 +20,10 @@ class HotelController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(),
             [
-                'district' => 'required',
-                'name' => 'required',
+                'Name' => 'required',
+                'Description' => 'required',
+                'District' => 'required',
+                'Location' => 'required',
             ]
         );
 
@@ -34,7 +36,49 @@ class HotelController extends Controller
             );
         }
         else{
+            $districtID  = District::districtId($request->district);
+            $latitude    = $request->latitude;
+            $longitude   = $request->longitude;
 
+            $hotel = new Hotel();
+            $hotel->name = $request->name;
+            $hotel->description = $request->description;
+            $hotel->telephone = $request->climate;
+            $hotel->address = $request->address;
+            $hotel->districtid = $districtID;
+            $hotel->email = $request->email;
+            $hotel->updated_at = Carbon::now();
+            $hotel->created_at = Carbon::now();
+
+            $hotelId = DB::table('hotel')->insertGetId(
+                [
+                    'name' => $hotel->name,
+                    'description' => $hotel->description,
+                    'telephone'=>$hotel->telephone,
+                    'address'=>$hotel->address,
+                    'email'=>$hotel->email,
+                    'district_id'=>$districtID,
+                    'updated_at'=>Carbon::now(),
+                    'created_at'=>Carbon::now()
+                ]
+            );
+
+            DB::update('update hotel set location=POINT(' . $latitude . ',' . $longitude . ') where id=' . $hotelId . ' ');
+
+            return response()->json(
+                [
+                    'Id'=>$hotelId,
+                    'Name' =>  $hotel->name,
+                    'Description' =>$hotel->description,
+                    'address'=>$hotel->address,
+                    'district'=>$hotel->district,
+                    'email'=>$request->email,
+                    'telephone'=>$request->telephone,
+                    'Latitude'=>$latitude,
+                    'Longitude'=>$longitude
+                ]
+
+            );
         }
 
     }

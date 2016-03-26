@@ -36,6 +36,9 @@ $app->get('/doc/requestresponse', function () use ($app) {
 $app->get('/doc/user', function () use ($app) {
    return view('register');
 });
+$app->get('/doc/step', function () use ($app) {
+   return view('step');
+});
 
 
 /*
@@ -43,7 +46,7 @@ $app->get('/doc/user', function () use ($app) {
  * */
 $app->post('place/create', 'PlaceController@store');
 $app->post('place/{id}/update', 'PlaceController@update');
-$app->delete('place', 'PlaceController@remove');
+$app->delete('place/{id}/remove', 'PlaceController@remove');
 $app->get('place/findall','PlaceController@findall');
 $app->get('place/{id}', 'PlaceController@findid');
 $app->get('place/name/{name}', 'PlaceController@findname');
@@ -53,9 +56,10 @@ $app->get('place/category/{category}', 'PlaceController@findcategory');
 /*
  * Route to mange review details
  * */
-$app->post('place/review/create', 'PlaceController@storereview');
-$app->get('place/review/findall', 'PlaceController@reviewfindall');
-$app->get('place/{placeid}/review', 'PlaceController@showreview');
+$app->post('review/create', 'PlaceController@storereview');
+$app->get('review/{placeid}', 'PlaceController@reviewfindId');
+
+//$app->get('review/{placeid}', 'PlaceController@showreview');
 /*
  * Location Based Service
  * */
