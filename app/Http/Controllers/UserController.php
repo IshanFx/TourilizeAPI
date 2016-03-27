@@ -94,6 +94,7 @@ class UserController
         }
 
     }
+
     public function checkUserAvailability($username,$password){
         $userstatus = DB::table('users')->where('email',$username)
             ->where('password',$password)->count();

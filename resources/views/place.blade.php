@@ -351,8 +351,10 @@
                     <h5>
                         If you need to get the details of visiting places near your current location you can use
                         this request.This request can use to get any number of visiting places based on providing
-                        latitude and longitude.<br>you can use this request.Respose is same as creating
-                        new place..
+                        latitude and longitude.When providing coordinate you have to use the place cordinate with
+                        only 4 decimal place. Also need to submit coordinate without decimal point. As a example
+                        if you need to submit coordinate 6.78323 you need to submit it as 67832 .<br>
+                        Respose is same as creating new place.But it have additional record called distance.
                     </h5>
 
                     <br>

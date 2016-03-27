@@ -78,8 +78,7 @@ $app->get('guider/category/{category}', 'GuiderController@findguiderbycategory')
 /*
  * Route to manage Hotels
  * */
-$app->post('hotel/create', 'HotelController@store');
-$app->delete('hotel/{id}', 'HotelController@remove');
+$app->post('hotel/create', 'HotelController@create');
 $app->post('hotel/{id}/update', 'HotelController@update');
 $app->get('hotel/findall', 'HotelController@findall');
 $app->get('hotel/name/{name}/{token}', 'HotelController@findhotel');

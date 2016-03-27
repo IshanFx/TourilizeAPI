@@ -185,16 +185,19 @@ class PlaceController extends Controller
         $categoryId = Category::categoryId($request->category);
         $place = Place::find($id);
 
-        $place->discription = $request->discription;
-        $place->climate = $request->climate;
-        $place->category = $categoryId;
+        Place::where('id', $id)
+            ->update(
+                [
+                    'climate' => $request->climate,
+                    'category_id'=>$categoryId,
+                    'description'=>$request->description
+                ]
+            );
 
-        $place->save();
-
-        return response()->json(
+       return response()->json(
             [
                 'Id'=>$id,
-                'discription'=>$place->discription,
+                'discription'=>$request->description,
                 'category'=>$request->category
             ]
         );
@@ -219,14 +222,14 @@ class PlaceController extends Controller
 
     }
 
-    public function showreview($id){
+   /* public function showreview($id){
         $place = DB::select('
             select comment,user from review
             JOIN place ON review.place_id = place.ID
              WHERE review.place_id ='.$id.'
         ');
         return response()->json($place);
-    }
+    }*/
 
 
     public function findnearlocation($latitude,$longitude,$count){
@@ -235,7 +238,7 @@ class PlaceController extends Controller
 
         $nearlocationdata = DB::select('
         SELECT  place.id,place.name,x(location) as latitude,y(location) as longitude,
-                description,climate,category.category,district.name as district,
+                description,climate,category.name,district.name as district,
 			    111.321 *
 				DEGREES(ACOS(
 					   COS(RADIANS( x(location)))
@@ -244,8 +247,8 @@ class PlaceController extends Controller
 					 + SIN(RADIANS(x(location)))
 					 * SIN(RADIANS("'.$latitude.'")))) AS distance
 			    FROM place
-			    JOIN category ON place.category = category.id
-			    JOIN district ON place.district = district.id
+			    JOIN category ON place.category_id = category.id
+			    JOIN district ON place.district_id = district.id
 			    order by distance
 			    LIMIT '.$count.';
 
