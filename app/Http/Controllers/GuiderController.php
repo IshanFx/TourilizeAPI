@@ -13,21 +13,23 @@ use App\Category;
 use App\Guider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class GuiderController extends Controller
 {
     public function store(Request $request){
         $validator = Validator::make($request->all(),
             [
-                'district' => 'required',
-                'name' => 'required',
+                'category' => 'required',
+                'firstname' => 'required',
+                'lastname'=>'required',
+
             ]
         );
 
         if ($validator->fails()) {
             return json_encode(
                 [
-                    "Error Code"=>"500",
                     "Message"=>"Fill All required Parameters"
                 ]
             );
@@ -42,72 +44,77 @@ class GuiderController extends Controller
             $guider->email = $request->email;
             $guider->category = $request->category;
             $guider->language = $request->language;
-
-            return response()->json([
-
-            ]);
+            $guider->save();
+            return response()->json(
+                [
+                'id'=>$guider->ID,
+                'firstname'=>$request->firstname,
+                'lastname'=>$request->lastname,
+                'telephone'=>$request->telephone,
+                'nic'=>$request->nic,
+                'address'=>$request->address,
+                'email'=>$request->email,
+                'category'=> $request->category
+            ]
+            );
         }
 
     }
 
     public function remove($id){
-        Guider::destroy($id);
+        $guider =  Guider::find($id);
+        $guider->delete();
+
+        return response()->json(
+            [
+            'id'=>$guider->ID,
+            'firstname'=>$guider->firstname,
+            'lastname'=>$guider->lastname,
+            'telephone'=>$guider->telephone,
+            'nic'=>$guider->nic,
+            'address'=>$guider->address,
+            'email'=>$guider->email,
+            'category'=> $guider->category
+        ]
+        );
 
     }
 
     public function update(Request $request, $id){
 
-        $categoryId = Category::categoryId($request->category);
         $guider = Guider::find($id);
 
         $guider->address = $request->address;
         $guider->telephone = $request->telephone;
         $guider->email = $request->email;
-        $guider->category = $categoryId;
+        $guider->category = $request->category;
         $guider->save();
 
         return response()->json(
             [
-                'Id'=>$id,
-                'Category'=>$guider->category,
-                'Address'=>$guider->address,
-                'Telephone'=>$guider->telephone,
-                'Email'=>$guider->email
+                'id'=>$id,
+                'category'=>$guider->category,
+                'address'=>$guider->address,
+                'telephone'=>$guider->telephone,
+                'email'=>$guider->email
             ]
         );
 
     }
 
     public function findguider($name){
-        $guider = DB::select("
-            SELECT guider.id,firstname,lastname,telephone as contact, nic , address,email
-            FROM guider
-            JOIN category ON guider.category_id=category.id
-            WHERE firstname = '".$name."' ");
-
+        $guider = Guider::where('firstname',$name)->first();
         return response()->json($guider);
     }
 
     public function findguiderbycategory($name){
-        $category = new Category();
-        $categoryID = $category->categoryId($name);
 
-        $guider = DB::select('
-            SELECT guider.id,firstname,lastname,telephone as contact, nic , address,email
-            FROM guider
-            JOIN category ON guider.category_id=category.id
-            WHERE category_id='.$categoryID.'
-        ');
-
+        $guider = Guider::where('category',$name)->get();
         return response()->json($guider);
     }
 
     public function findall(){
-        $guider = DB::select('
-            SELECT guider.id,firstname,lastname,telephone as contact, nic , address,email
-            FROM guider
-            JOIN category ON guider.category_id=category.id
-        ');
+        $guider  = Guider::all();
         return response()->json($guider);
     }
 

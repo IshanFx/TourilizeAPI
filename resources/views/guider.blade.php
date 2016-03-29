@@ -2,14 +2,14 @@
 @section('content')
 <?php
     $host = "http://api.tourilize.com";
-    $apiurlguidercreate = $host."/guider/create";
-    $apiurlguiderupdate = $host."/guider/{id}/update";
-    $apiurlguiderfindall = $host."/guider/findall";
-    $apiurlguiderfindid = $host."/guider/{id}";
-    $apiurlguiderfindname  = $host."/guider/name/{name}";
-    $apiurlguiderfindcategory = $host."/guider/category/{categoryname}";
+    $apiurlguidercreate ="POST : ". $host."/guider/create";
+    $apiurlguiderupdate ="PUT : ". $host."/guider/{id}/update";
+    $apiurlguiderfindall ="GET : ". $host."/guider/findall";
+    $apiurlguiderfindid ="GET : ". $host."/guider/{id}";
+    $apiurlguiderfindname  ="GET : ". $host."/guider/name/{name}";
+    $apiurlguiderfindcategory ="GET : ". $host."/guider/category/{categoryname}";
 ?>
-    <div id="page-wrapper" class="col-md-5 col-md-offset-1">
+    <div id="page-wrapper" class="col-md-8  col-md-offset-1">
 
         <div class="container-fluid">
 
@@ -36,36 +36,43 @@
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>FirstName</td>
                             <td>Add the First Name</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>LastName</td>
                             <td>Add the last name </td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Address</td>
                             <td>Add the address of the guider</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Telephone</td>
                             <td>Add the telephone number of guider</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>NIC</td>
                             <td>Add the email address of hotel</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>Add the email address of guider</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
 
                     </table>
@@ -110,27 +117,33 @@
                         <tr>
                             <th>Parameters</th>
                             <th>Description</th>
-                            <th>type</th>
+                            <th>Type</th>
+                            <th>Required</th>
+
                         </tr>
                         <tr>
                             <td>ID</td>
                             <td>Add the guider ID</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Address</td>
                             <td>Add the address of the guider</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Telephone</td>
                             <td>Add the telephone number of guider</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>Add the email address of guider</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
                     <br>
@@ -208,12 +221,14 @@
                             <tr>
                                 <th>Parameters</th>
                                 <th>Description</th>
-                                <th>type</th>
+                                <th>Type</th>
+                                <th>Required</th>
                             </tr>
                             <tr>
                                 <td>ID</td>
                                 <td>Add the guider ID</td>
                                 <td>Text</td>
+                                <td>Yes</td>
                             </tr>
                         </table>
                         <br>
@@ -239,12 +254,14 @@
                             <tr>
                                 <th>Parameters</th>
                                 <th>Description</th>
-                                <th>type</th>
+                                <th>Type</th>
+                                <th>Required</th>
                             </tr>
                             <tr>
                                 <td>Name</td>
                                 <td>Add the guider name</td>
                                 <td>Text</td>
+                                <td>Yes</td>
                             </tr>
                         </table>
                         <br>
@@ -270,12 +287,14 @@
                             <tr>
                                 <th>Parameters</th>
                                 <th>Description</th>
-                                <th>type</th>
+                                <th>Type</th>
+                                <th>Required</th>
                             </tr>
                             <tr>
                                 <td>Category</td>
                                 <td>Add the guider category</td>
                                 <td>Text</td>
+                                <td>Yes</td>
                             </tr>
                         </table>
                         <br>

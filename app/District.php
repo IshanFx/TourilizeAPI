@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
     protected $table = 'district';
-
+    protected $primaryKey = 'ID';
 
     public static function districtId($name){
         $districtID =  District::where('name',$name)->first();

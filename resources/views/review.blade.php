@@ -4,6 +4,7 @@
 $host = "http://api.tourilize.com";
 $apiurlreviewfindid ="GET: ". $host . "/review/{placeid}";
 $apiurlreviewcreate = "POST: ". $host . "/review/create";
+$apiurlreviewcreate = "DELETE : ".$host."/review/{reviewid}";
 ?>
     <div id="page-wrapper" class="col-md-8 col-md-offset-1">
 
@@ -34,21 +35,25 @@ $apiurlreviewcreate = "POST: ". $host . "/review/create";
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>Place Id</td>
                             <td>Add the place Id </td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Comment</td>
                             <td>Your review about place</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>User</td>
                             <td>Name of the user who submit review</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
 
                     </table>
@@ -87,7 +92,21 @@ $apiurlreviewcreate = "POST: ". $host . "/review/create";
                         Get the review of particular place based on it Id.Request url is mentioned bellow
                     </p>
                     <br>
+                    table class="table table-bordered ">
+                    <tr>
+                        <th>Parameters</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                    </tr>
+                    <tr>
+                        <td>Place Id</td>
+                        <td>Add the place Id </td>
+                        <td>Text</td>
+                        <td>Yes</td>
+                    </tr>
 
+                    </table>
                     <div class="well col-md-12 well-sm">
                         {{ $apiurlreviewfindid }}
                     </div>

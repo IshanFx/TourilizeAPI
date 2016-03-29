@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
 class Guider extends Model
 {
     protected $table = 'guider';
+    protected $primaryKey = 'ID';
+    public $timestamps = false;
 
     public $fillable = [];
 

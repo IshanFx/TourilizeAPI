@@ -4,7 +4,7 @@
     <link href="{{ url('css/sb-admin.css') }}" rel="stylesheet">
     <link href="{{ url('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ url('css/app.css')}}" type="text/css">
-
+    <link href='https://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
     <title></title>
 </head>
 <body>

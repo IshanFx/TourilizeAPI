@@ -58,6 +58,7 @@ $app->get('place/category/{category}', 'PlaceController@findcategory');
  * */
 $app->post('review/create', 'PlaceController@storereview');
 $app->get('review/{placeid}', 'PlaceController@reviewfindId');
+$app->delete('review/{reviewid}', 'PlaceController@reviewdelete');
 
 //$app->get('review/{placeid}', 'PlaceController@showreview');
 /*
@@ -91,6 +92,8 @@ $app->get('testtoken',function(){
 
 $app->post('user/create','UserController@create');
 $app->post('token/create','UserController@tokencheck');
-
+$app->get('/hello',function(\Illuminate\Http\Request $request){
+   echo $request->getHost();
+});
 
 

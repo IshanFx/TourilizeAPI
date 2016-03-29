@@ -2,14 +2,14 @@
 @section('content')
     <?php
     $host = "http://api.tourilize.com";
-    $apiurlhotelcreate = $host."/hotel/create";
-    $apiurlhotelupdate = $host."/hotel/{id}/update";
-    $apiurlhotelfindall = $host."/hotel/findall";
-    $apiurlhotelfindid = $host."/hotel/{id}";
-    $apiurlhotelfindname  = $host."/hotel/name/{name}";
-    $apiurlhotelfinddistrict = $host."/hotel/district/{districtname}";
+    $apiurlhotelcreate ="POST : ". $host."/hotel/create";
+    $apiurlhotelupdate ="PUT : ". $host."/hotel/{id}/update";
+    $apiurlhotelfindall ="GET : ". $host."/hotel/findall";
+    $apiurlhotelfindid ="GET : ". $host."/hotel/{id}";
+    $apiurlhotelfindname  ="GET : ". $host."/hotel/name/{name}";
+    $apiurlhotelfinddistrict = "GET : ".$host."/hotel/district/{districtname}";
     ?>
-    <div id="page-wrapper" class="col-md-5 col-md-offset-1">
+    <div id="page-wrapper" class="col-md-8 col-md-offset-1">
 
         <div class="container-fluid">
 
@@ -36,46 +36,55 @@
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>Name</td>
                             <td>Add the place Name</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Description</td>
                             <td>Add the place Description</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Address</td>
                             <td>Add the address of the hotel</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Telephone</td>
                             <td>Add the telephone number of hotel</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>Add the email address of hotel</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>District</td>
                             <td>Add the district where hotel establish</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Latitude</td>
                             <td>Add the latitude coordinate of the hotel</td>
                             <td>Float</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Longitude</td>
                             <td>Add the longitude coordinate of the hotel</td>
                             <td>Float</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
                     <br>
@@ -121,36 +130,43 @@
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>ID</td>
                             <td>Add the hotel ID</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Name</td>
                             <td>Add the place Name</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Description</td>
                             <td>Add the place Description</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Address</td>
                             <td>Add the address of the hotel</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Telephone</td>
                             <td>Add the telephone number of hotel</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>Add the email address of hotel</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
                     <br>

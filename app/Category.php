@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $table = 'category';
+    protected $primaryKey = 'ID';
 
     public static function categoryId($name){
         $categoryID = Category::where('NAME',$name)->first();

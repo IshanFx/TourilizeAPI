@@ -31,14 +31,16 @@ class PlaceController extends Controller
                 'climate' => 'required',
                 'category' => 'required',
                 'description' => 'required',
+                'latitude'=>'required',
+                'longitude'=>'required'
             ]
         );
 
         if ($validator->fails()) {
          return json_encode(
              [
-                 "Error Code"=>"500",
                  "Message"=>"Fill All required Parameters"
+
              ]
          );
         }
@@ -209,12 +211,11 @@ class PlaceController extends Controller
         $review->place_id = $request->placeid;
         $review->comment = $request->comment;
         $review->user = $request->user;
-
         $review->save();
 
         return response()->json(
             [
-                'Place_ID'=>$review->place_id,
+                'Place_Id'=>$review->place_id,
                 'Comment'=>$review->comment,
                 'User'=>$request->name
             ]
@@ -290,5 +291,12 @@ class PlaceController extends Controller
             //$items[$id] = $item;
         }
         return response()->json($items);
+    }
+
+    public function reviewdelete($reviewid){
+        $review  = Review::find($reviewid);
+        $review->delete();
+
+        return response()->json(['Review_Id'=>$reviewid]);
     }
 }

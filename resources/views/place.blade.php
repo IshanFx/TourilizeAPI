@@ -2,17 +2,17 @@
 @section('content')
     <?php
     $host = "http://api.tourilize.com";
-    $apiurlplacefindall ="GET: ". $host . "/place/findall";
-    $apiurlplacefindid = "GET: ". $host . "/place/{id}";
-    $apiurlplacefindname = "GET: ". $host . "/place/name/{name}";
-    $apiurlplacefinddistrict = "GET: ". $host . "/place/district/{districtname}";
-    $apiurlplacefindcategory = "GET: ". $host . "/place/category/{categoryname}";
-    $apiurlplacefindlatlong = "GET: ". $host . "/place/location/{latitude}/{longitude}/{count}";
-    $apiurlplacecreate = "POST: ". $host . "/place/create";
-    $apiurlplaceupdate = "POST: ". $host . "/place/{id}/update";
+    $apiurlplacefindall ="GET : ". $host . "/place/findall";
+    $apiurlplacefindid = "GET : ". $host . "/place/{id}";
+    $apiurlplacefindname = "GET : ". $host . "/place/name/{name}";
+    $apiurlplacefinddistrict = "GET : ". $host . "/place/district/{districtname}";
+    $apiurlplacefindcategory = "GET : ". $host . "/place/category/{categoryname}";
+    $apiurlplacefindlatlong = "GET : ". $host . "/place/location/{latitude}/{longitude}/{count}";
+    $apiurlplacecreate = "POST : ". $host . "/place/create";
+    $apiurlplaceupdate = "PUT : ". $host . "/place/{id}/update";
 
     ?>
-    <div id="page-wrapper" class="col-md-5 col-md-offset-1">
+    <div id="page-wrapper" class="col-md-8 col-md-offset-1">
 
         <div class="container-fluid">
 
@@ -42,41 +42,49 @@
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>Name</td>
                             <td>Add the place Name</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Description</td>
                             <td>Add the place Description</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Climate</td>
                             <td>Add the place of place</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Category</td>
                             <td>Add the category related to place</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>District</td>
                             <td>Add the district where place establish</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Latitude</td>
                             <td>Add the latitude coordinate of the place</td>
                             <td>Float</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Longitude</td>
                             <td>Add the longitude coordinate of the place</td>
                             <td>Float</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
 
@@ -126,26 +134,31 @@
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>ID</td>
                             <td>Add the place ID</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Description</td>
                             <td>Description of place </td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Category</td>
                             <td>Category of place</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Climate</td>
                             <td>Climate of place</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
 
                     </table>
@@ -228,11 +241,13 @@
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>ID</td>
                             <td>Add the place ID</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
 
@@ -260,12 +275,14 @@
                         <tr>
                             <th>Parameters</th>
                             <th>Description</th>
-                            <th>type</th>
+                            <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>Name</td>
                             <td>Add the place Name</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
                     <div class="well col-md-12 well-sm">
@@ -292,12 +309,14 @@
                         <tr>
                             <th>Parameters</th>
                             <th>Description</th>
-                            <th>type</th>
+                            <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>District</td>
                             <td>Add the District Name</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
                     <div class="well col-md-12 well-sm">
@@ -326,12 +345,14 @@
                         <tr>
                             <th>Parameters</th>
                             <th>Description</th>
-                            <th>type</th>
+                            <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>Category</td>
                             <td>Add the place category Name</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
                     <div class="well col-md-12 well-sm">
@@ -363,21 +384,25 @@
                             <th>Parameters</th>
                             <th>Description</th>
                             <th>Type</th>
+                            <th>Required</th>
                         </tr>
                         <tr>
                             <td>Latitude</td>
                             <td>Add longitude location</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Longitude</td>
                             <td>Add longitude location</td>
                             <td>Text</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Count</td>
                             <td>Add no of result need</td>
                             <td>Number</td>
+                            <td>Yes</td>
                         </tr>
                     </table>
                     <div class="well col-md-12 well-sm">
@@ -387,6 +412,32 @@
 
             </div>
             <!-- /.row -->
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                        Example Request (JQUERY)
+                    </h4>
+
+
+                    <div class="well col-md-12 well-sm">
+                        $.ajax({ <br>
+                        &nbsp;&nbsp;url: "http://tourilize.com/hotel/create/",<br>
+                        &nbsp;&nbsp;type: "POST", <br>
+                        &nbsp;&nbsp;data:{name:'name',district:'colombo',telephone:'07123233'}, // Apply All required fields <br>
+                        &nbsp;&nbsp;success: function (e) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$.each(e,function(e,place){ <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(place.name);<br>
+                        &nbsp;&nbsp;});<br>
+                        &nbsp;&nbsp;}, error: function (e) { <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log("error_sub_load!", e) <br>
+                        &nbsp;&nbsp;}<br>
+
+                        }); <br>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
         <!-- /.container-fluid -->
