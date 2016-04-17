@@ -19,8 +19,13 @@ use Illuminate\Support\Facades\Validator;
 
 class HotelController extends Controller
 {
-    public function create(Request $request){
-        try {
+    /*
+   * Create hotel details.
+   */
+
+    public function create(Request $request,$token){
+        if(User::checkToken($token)) {
+
             $validator = Validator::make($request->all(),
                 [
                     'name' => 'required',
@@ -82,22 +87,60 @@ class HotelController extends Controller
                 );
             }
         }
-        catch(\Exception $ex){
-            echo $ex;
+        else
+        { return json_encode(
+            [
+                "Message"=>"Invalid Token"
+
+            ]
+        );
+        }
+
+
+
+
+
+    }
+
+    /*
+   * Remove hotel details.
+   */
+
+    public function remove($id,$token){
+        if(User::checkToken($token)) {
+            Hotel::destroy($id);
+            return response()->json(['id'=>$id]);
+        }
+        else
+        { return json_encode(
+            [
+                "Message"=>"Invalid Token"
+
+            ]
+        );
         }
 
     }
 
-    public function remove($id){
-        Hotel::destroy($id);
-    }
+    /*
+    * Update hotel details.
+    */
 
-    public function update(Request $request,$id){
-
-
-        Hotel::where('id', $id)
-            ->update(
+    public function update(Request $request,$id,$token){
+        if(User::checkToken($token)) {
+            Hotel::where('id', $id)
+                ->update(
+                    [
+                        'name' => $request->name,
+                        'address'=> $request->address,
+                        'email'=> $request->email,
+                        'description'=> $request->description,
+                        'telephone'=>$request->telephone
+                    ]
+                );
+            return response()->json(
                 [
+                    'id'=>$id,
                     'name' => $request->name,
                     'address'=> $request->address,
                     'email'=> $request->email,
@@ -105,24 +148,26 @@ class HotelController extends Controller
                     'telephone'=>$request->telephone
                 ]
             );
-        return response()->json(
+        }
+        else
+        { return json_encode(
             [
-                'id'=>$id,
-                'name' => $request->name,
-                'address'=> $request->address,
-                'email'=> $request->email,
-                'description'=> $request->description,
-                'telephone'=>$request->telephone
+                "Message"=>"Invalid Token"
+
             ]
         );
+        }
+
+
     }
 
     /*
      * Get the all available hotel details.
-     * */
+     */
 
-    public function findall(){
-       $hotel = DB::select('
+    public function findall($token){
+        if(User::checkToken($token)) {
+            $hotel = DB::select('
             SELECT hotel.id,hotel.name,address,x(location) as latitude,
             y(location)as longitude,description,district.name as district,telephone as contact,email
             FROM hotel
@@ -130,12 +175,22 @@ class HotelController extends Controller
 
         ');
 
-        return response()->json($hotel);
+            return response()->json($hotel);
+        }
+        else
+        { return json_encode(
+            [
+                "Message"=>"Invalid Token"
+
+            ]
+        );
+        }
+
     }
 
     /*
      * Search hotel by name
-     * */
+     */
     public function findhotel($name,$token){
 
         if(User::checkToken($token)) {
@@ -152,11 +207,12 @@ class HotelController extends Controller
         }
     }
 
-    public function findhoteldistrict($name){
-        $district = new District();
-        $districtID =  $district->districtId($name);
+    public function findhoteldistrict($name,$token){
+        if(User::checkToken($token)) {
+            $district = new District();
+            $districtID =  $district->districtId($name);
 
-        $hotel = DB::select('
+            $hotel = DB::select('
             SELECT hotel.id,hotel.name,address,x(location) as latitude,
             y(location) as longitude,description,district.name as district,telephone as contact,email
             FROM hotel
@@ -164,6 +220,16 @@ class HotelController extends Controller
             WHERE district_id ='.$districtID.'
         ');
 
-        return response()->json($hotel);
+            return response()->json($hotel);
+        }
+        else
+        { return json_encode(
+            [
+                "Message"=>"Invalid Token"
+
+            ]
+        );
+        }
+
     }
 }

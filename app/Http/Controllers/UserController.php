@@ -30,10 +30,10 @@ class UserController
                 ->where('password',$password)
                 ->get();
             $usertoken = json_decode(json_encode($usertoken),true);
-            return response()->json(['token'=>$usertoken[0]['token']]);
+               return response()->json(['token'=>$usertoken[0]['token']]);
         }
         else{
-            return response()->json(['message'=>'User Not found']);
+            return response()->json(['token'=>'User Not found. Please register before get key']);
         }
     }
 

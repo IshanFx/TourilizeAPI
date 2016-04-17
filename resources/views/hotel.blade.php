@@ -1,10 +1,10 @@
 @extends('app')
 @section('content')
     <?php
-    $host = "http://api.tourilize.com";
+    $host = "http://www.tourilize.com/api";
     $apiurlhotelcreate ="POST : ". $host."/hotel/create";
-    $apiurlhotelupdate ="PUT : ". $host."/hotel/{id}/update";
-    $apiurlhotelfindall ="GET : ". $host."/hotel/findall";
+    $apiurlhotelupdate ="POST : ". $host."/hotel/{id}/update";
+    $apiurlhotelfindall ="GET : ". $host."/hotel";
     $apiurlhotelfindid ="GET : ". $host."/hotel/{id}";
     $apiurlhotelfindname  ="GET : ". $host."/hotel/name/{name}";
     $apiurlhotelfinddistrict = "GET : ".$host."/hotel/district/{districtname}";
@@ -40,13 +40,13 @@
                         </tr>
                         <tr>
                             <td>Name</td>
-                            <td>Add the place Name</td>
+                            <td>Add the hotel Name</td>
                             <td>Text</td>
                             <td>Yes</td>
                         </tr>
                         <tr>
                             <td>Description</td>
-                            <td>Add the place Description</td>
+                            <td>Add the hotel Description</td>
                             <td>Text</td>
                             <td>Yes</td>
                         </tr>

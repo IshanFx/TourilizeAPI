@@ -1,13 +1,14 @@
 @extends('app')
 @section('content')
 <?php
-    $host = "http://api.tourilize.com";
+    $host = "http://www.tourilize.com/api";
     $apiurlguidercreate ="POST : ". $host."/guider/create";
-    $apiurlguiderupdate ="PUT : ". $host."/guider/{id}/update";
-    $apiurlguiderfindall ="GET : ". $host."/guider/findall";
+    $apiurlguiderupdate ="POST : ". $host."/guider/{id}/update";
+    $apiurlguiderfindall ="GET : ". $host."/guider";
     $apiurlguiderfindid ="GET : ". $host."/guider/{id}";
     $apiurlguiderfindname  ="GET : ". $host."/guider/name/{name}";
     $apiurlguiderfindcategory ="GET : ". $host."/guider/category/{categoryname}";
+    $apiurlguiderdelete ="DELETE : ". $host."/guider/{id}";
 ?>
     <div id="page-wrapper" class="col-md-8  col-md-offset-1">
 
@@ -28,8 +29,8 @@
                         Add new Guider Details
                     </h4>
                     <p>
-                        You can submit the new hotel details if the API doesn't have. Before submit please check whether the
-                        all data can submit.
+                        You can submit the new hotel details . Before submit please check whether the
+                        all data is available.
                     </p>
                     <table class="table table-bordered ">
                         <tr>
@@ -64,7 +65,7 @@
                         </tr>
                         <tr>
                             <td>NIC</td>
-                            <td>Add the email address of hotel</td>
+                            <td>Add the NIC  of guider</td>
                             <td>Text</td>
                             <td>Yes</td>
                         </tr>
@@ -95,6 +96,51 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;"Email" : "lahirup@gmail.com",<br>
                             &nbsp;&nbsp;&nbsp;&nbsp;"NIC" : "8912372347v",<br><br>
 
+                            }
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                        Remove Guider Details
+                    </h4>
+                    <p>
+                        You can remove the guider using the guider ID
+                    </p>
+                    <table class="table table-bordered ">
+                        <tr>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                        </tr>
+                        <tr>
+                            <td>ID</td>
+                            <td>Add the guider ID</td>
+                            <td>Text</td>
+                            <td>Yes</td>
+                        </tr>
+
+
+                    </table>
+                    <br>
+                    <div class="well col-md-12 well-sm">
+                        {{ $apiurlguiderdelete }}
+                    </div>
+                    <p>
+                        Response to this request is guider's id.
+                    </p>
+
+                    <div class="well col-md-12 well-sm">
+                        <p>
+                            {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Id" : "23"<br>
                             }
                         </p>
                     </div>

@@ -1,15 +1,15 @@
 @extends('app')
 @section('content')
     <?php
-    $host = "http://api.tourilize.com";
-    $apiurlplacefindall ="GET : ". $host . "/place/findall";
+    $host = "http://www.tourilize.com/api";
+    $apiurlplacefindall ="GET : ". $host . "/place";
     $apiurlplacefindid = "GET : ". $host . "/place/{id}";
     $apiurlplacefindname = "GET : ". $host . "/place/name/{name}";
     $apiurlplacefinddistrict = "GET : ". $host . "/place/district/{districtname}";
     $apiurlplacefindcategory = "GET : ". $host . "/place/category/{categoryname}";
     $apiurlplacefindlatlong = "GET : ". $host . "/place/location/{latitude}/{longitude}/{count}";
     $apiurlplacecreate = "POST : ". $host . "/place/create";
-    $apiurlplaceupdate = "PUT : ". $host . "/place/{id}/update";
+    $apiurlplaceupdate = "POST : ". $host . "/place/{id}/update";
 
     ?>
     <div id="page-wrapper" class="col-md-8 col-md-offset-1">

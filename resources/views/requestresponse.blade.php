@@ -9,70 +9,31 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Request / Response
+                        Request / Response code
                     </h1>
                 </div>
             </div>
             <div class="row">
+
                 <div class="row">
                     <div class="col-md-12">
-                        <h4>Request</h4>
+                        <h4>Response</h4>
                         <p >
-                            This is the response codes send by API id some error occure. Base on this error response
-                            you can configure your code.
+                            Each request are menctione in each section of the docuemnt.All the request are based on restful
+                            principles. Accoring the function user can perform GET,POST,PUT,DELETE request if it available.
+                            You can check each section to identify available request.
                         </p>
                         <br>
-
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td>200 OK</td>
-                                    <td>Request success</td>
-                                </tr>
-                                <tr>
-                                    <td>201 Created</td>
-                                    <td>POST request sucess</td>
-                                </tr>
-                                <tr>
-                                    <td>404 Not Found</td>
-                                    <td>Request URI not found</td>
-                                </tr>
-                                <tr>
-                                    <td>500 Internal Error</td>
-                                    <td>Internal server error</td>
-                                </tr>
-                            </table>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Response</h4>
                         <p >
-                            This is the response codes send by API id some error occure. Base on this error response
-                            you can configure your code.
+                            All the responses are JSON object or JSON array. Capable to use with any plateform which can
+                            handle JSON.
                         </p>
                         <br>
-                        <div class="row">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td>200 OK</td>
-                                    <td>Request success</td>
-                                </tr>
-                                <tr>
-                                    <td>201 Created</td>
-                                    <td>POST request sucess</td>
-                                </tr>
-                                <tr>
-                                    <td>404 Not Found</td>
-                                    <td>Request URI not found</td>
-                                </tr>
-                                <tr>
-                                    <td>500 Internal Error</td>
-                                    <td>Internal server error</td>
-                                </tr>
-                            </table>
-                        </div>
-
                     </div>
                 </div>
             </div>

@@ -63,11 +63,16 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p>
-                           As the main security feature we are maintaining token based authentication mechanism. Each user have unique token and he need
-                            token to make request. Please flow 'steps' page to make token.
+                           As the main security feature we are maintaining key based authentication mechanism.
+                            Each user have unique token. When request service user need to pass that key with URI.
+                            Please flow 'steps' page to make learn how to make key.
                         </p>
                         <br>
 
+
+                    </div>
+                    <div class="well col-md-12 well-sm">
+                        <p>http://tourilize.com/api/place/{YOUR_KEY}</p>
                     </div>
                 </div>
 

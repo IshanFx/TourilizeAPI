@@ -15,11 +15,11 @@
             </div>
         </div>
         <div>
-            <h4>Follow these step before deal with the API</h4>
+            <h4>Follow these step before work with the API</h4><br>
             <h5>1. First create User Account</h5>
-            <h5>2. When creating Account It will return API key for Key. Remember that</h5>
-            <h5>3. If you forget the API key go to main page and click get key button and provide email and password.
-                It will return the API key
+            <h5>2. When creating Account It will return API key for Key. Remember that key.</h5>
+            <h5>3. If you forget the API key go to main page and click get key button and enter email and password.
+                It will return the API key.
             </h5>
             <h5>4. request data and get What you need. Please follow documentaion when do request</h5>
         </div>

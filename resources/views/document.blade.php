@@ -80,7 +80,7 @@
                             data: {username:email,password:pass},
                             success: function (e) {
                                 $('.tokenAppend').append(
-                                    '<div class="alert alert-success" role="alert">Your Token : '+ e.token+'</div>'
+                                    '<div class="alert alert-success" role="alert">Your Key : '+ e.token+'</div>'
                                 );
                             }, error: function (e) {
                                 console.log("error_sub_load!", e)
